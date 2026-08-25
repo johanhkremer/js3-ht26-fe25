@@ -1,3 +1,5 @@
+//Uppgifter från lektion 1
+
 const products = [
     {
         name: "iphone",
@@ -45,3 +47,19 @@ const formatProduct = (product) => {
 console.log(formatProduct(products[1]))
 
 products.map(product => console.log(formatProduct(product)))
+
+// Använd spread (...) för att skapa en array med en extra produkt tillagd, utan att ändra
+// den ursprungliga products-arrayen. Logga båda arrayerna och visa att originalet är oförändrat.
+
+const newProduct = {
+    name: "soffa",
+    price: 4000,
+    stock: 10,
+    inStock: true,
+    category: "home",
+}
+
+const newProductsList = [...products, newProduct]
+
+console.log("Gamla listan:", products)
+console.log("Nya listan med ny produkt:", newProductsList)
