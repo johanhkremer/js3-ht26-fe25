@@ -1,14 +1,22 @@
-import ProductList from "./ProductList";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import NotFound from "./NotFound";
+import Shop from "./Shop";
+import Nav from "./components/Nav";
+import About from "./About";
+import ProductDetail from "./ProductDetail";
 
 function App() {
 
   return <>
-    <h1>Listor, props, lifting state</h1>
-
-    <h2>Product list</h2>
-    <ProductList />
-
-
+    <Nav />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/shop/:id" element={<ProductDetail />} />
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   </>
 }
 

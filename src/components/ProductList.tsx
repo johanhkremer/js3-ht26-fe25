@@ -1,13 +1,6 @@
-import { useState } from "react";
+import { products } from "../data/products";
 import ProductCard from "./ProductCard";
-
-export type Product = { id: number, name: string, price: number }
-
-const products: Product[] = [
-    { id: 1, name: "T-shirt", price: 199 },
-    { id: 2, name: "Mugg", price: 89 },
-    { id: 3, name: "Keps", price: 149 },
-]
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
 
@@ -16,6 +9,7 @@ const ProductList = () => {
             {products.map((product) => (
                 <ProductCard key={product.id}>
                     <strong>{product.name}</strong>- {product.price} kr
+                    <Link to={`/shop/${product.id}`}>{product.name}</Link>
                 </ProductCard>
             ))}
         </>
