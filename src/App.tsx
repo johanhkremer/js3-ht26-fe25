@@ -5,6 +5,9 @@ import Shop from "./Shop";
 import Nav from "./components/Nav";
 import About from "./About";
 import ProductDetail from "./ProductDetail";
+import { PureCounter } from "./components/PureCounter";
+import { ImpureCounter } from "./components/ImpureCounter";
+import Counter from "./components/Counter";
 
 function App() {
 
@@ -19,7 +22,13 @@ function App() {
     </Routes>
 
     <h2>Pure & Impure functions</h2>
+    <PureCounter count={2} />
+    <PureCounter count={2} />
+    <ImpureCounter />
+    <ImpureCounter />
 
+    <h2>Use Effect</h2>
+    <Counter />
   </>
 }
 
