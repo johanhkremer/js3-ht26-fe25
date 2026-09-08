@@ -17,6 +17,9 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
+
+    <h2>Pure & Impure functions</h2>
+
   </>
 }
 
