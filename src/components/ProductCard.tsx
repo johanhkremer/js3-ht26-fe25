@@ -1,10 +1,18 @@
-import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
+import type { Product } from "../data/products";
 
-
-const ProductCard = ({ children }: { children: ReactNode }) => {
+const ProductCard = (
+    { product }: { product: Product },
+    { onSelect }: {
+        product: Product;
+        onSelect: () => void
+    }
+) => {
     return (
         <div className="product-card">
-            {children}
+            <strong>{product.name}</strong>- {product.price} kr
+            <Link to={`/shop/${product.id}`}>{product.name}</Link>
+            <button onClick={onSelect}>Köp</button>
         </div>
     )
 }

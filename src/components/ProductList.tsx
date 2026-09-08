@@ -1,16 +1,20 @@
+import { useState } from "react";
 import { products } from "../data/products";
 import ProductCard from "./ProductCard";
-import { Link } from "react-router-dom";
 
 const ProductList = () => {
+    const [selectedId, setSelectedId] = useState<number | null>(null)
+    const selectedProduct = products.find((product) => product.id === selectedId)
 
     return (
         <>
+            <p>Vald produkt: {selectedProduct ? selectedProduct.name : "Ingen"}</p>
             {products.map((product) => (
-                <ProductCard key={product.id}>
-                    <strong>{product.name}</strong>- {product.price} kr
-                    <Link to={`/shop/${product.id}`}>{product.name}</Link>
-                </ProductCard>
+                <ProductCard
+                    key={product.id}
+                    product={product}
+                    onSelect={() => setSelectedId(product.id)}
+                />
             ))}
         </>
     )

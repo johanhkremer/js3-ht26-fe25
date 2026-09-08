@@ -5,6 +5,12 @@ body {
     padding: 0 1rem;
 }
 
+nav {
+    display: flex;
+    gap: 1rem;
+    background-color: bisque;
+}
+
 .product-card {
     border: 1px solid #ccc;
     border-radius: 6px;
