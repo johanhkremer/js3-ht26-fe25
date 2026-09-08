@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../data/products";
 
-const ProductCard = ({ product, onSelect }: { product: Product; onSelect: () => void }) => {
+type ProductCardProps = {
+    product: Product,
+    onSelect: () => void
+}
+
+const ProductCard = ({ product, onSelect }: ProductCardProps) => {
     return (
         <div className="product-card">
-            <strong>{product.name}</strong>- {product.price} kr
+            <div>
+                <strong>{product.name}</strong>- {product.price} kr
+            </div>
             <Link to={`/shop/${product.id}`}>{product.name}</Link>
-            <button onClick={onSelect}>Köp</button>
+            <button onClick={onSelect}>Välj</button>
         </div>
     )
 }

@@ -8,12 +8,20 @@ body {
 nav {
     display: flex;
     gap: 1rem;
+    padding: 1rem;
     background-color: bisque;
 }
 
 .product-card {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 1rem;
     margin-bottom: 0.75rem;
+}
+
+.product-card button {
+    max-width: fit-content;
 }
