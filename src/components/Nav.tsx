@@ -14,6 +14,7 @@ const Nav = ({ cartCount }: navProps) => {
             <div>
                 <NavLink to="/" className={navLinkClass} end>Homepage</NavLink>
                 <NavLink to="/shop" className={navLinkClass}>Butik</NavLink>
+                <NavLink to="/comments" className={navLinkClass}>Kommentarer</NavLink>
                 <NavLink to="/about" className={navLinkClass}>Om oss</NavLink>
             </div>
             <div className="cart">
