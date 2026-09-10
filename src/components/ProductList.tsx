@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { products } from "../data/products";
+import { useState } from "react";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {

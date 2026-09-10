@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import NotFound from "./NotFound";
-import Shop from "./Shop";
-import Nav from "./components/Nav";
-import About from "./About";
-import ProductDetail from "./ProductDetail";
-import { PureCounter } from "./components/PureCounter";
 import { ImpureCounter } from "./components/ImpureCounter";
+import { PureCounter } from "./components/PureCounter";
+import { Route, Routes } from "react-router-dom";
+import About from "./About";
 import Counter from "./components/Counter";
+import Home from "./Home";
+import Nav from "./components/Nav";
+import NotFound from "./NotFound";
+import ProductDetail from "./ProductDetail";
+import Shop from "./Shop";
 
 function App() {
 
