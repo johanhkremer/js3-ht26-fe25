@@ -1,3 +1,7 @@
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: system-ui, sans-serif;
     max-width: 640px;
@@ -7,13 +11,40 @@ body {
 
 nav {
     display: flex;
-    gap: 1rem;
-    background-color: bisque;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-link {
+    margin-right: 1rem;
+    font-weight: normal;
+}
+
+.nav-link-active {
+    font-weight: bold;
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 1rem;
     margin-bottom: 0.75rem;
+}
+
+.product-card button {
+    max-width: fit-content;
+}
+
+.price-tag {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    font-weight: bold;
+    max-width: fit-content;
+
 }

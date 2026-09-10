@@ -26,7 +26,7 @@ export const products: Product[] = [
         id: 4,
         name: "Termosbägare Aurora",
         price: 199,
-        inStock: true,
+        inStock: false,
         description: "Håller drycken varm i upp till 8 timmar.",
     },
     {
