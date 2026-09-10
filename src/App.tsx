@@ -1,13 +1,10 @@
-import { ImpureCounter } from "./components/ImpureCounter";
-import { PureCounter } from "./components/PureCounter";
 import { Route, Routes } from "react-router-dom";
-import About from "./About";
-import Counter from "./components/Counter";
-import Home from "./Home";
+import About from "./pages/About";
+import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import NotFound from "./NotFound";
-import ProductDetail from "./ProductDetail";
-import Shop from "./Shop";
+import NotFound from "./pages/NotFound";
+import ProductDetail from "./pages/ProductDetail";
+import Shop from "./pages/Shop";
 
 function App() {
 
@@ -20,15 +17,6 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-
-    <h2>Pure & Impure functions</h2>
-    <PureCounter count={2} />
-    <PureCounter count={2} />
-    <ImpureCounter />
-    <ImpureCounter />
-
-    <h2>Use Effect</h2>
-    <Counter />
   </>
 }
 
