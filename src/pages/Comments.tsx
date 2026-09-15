@@ -10,9 +10,13 @@ type Comment = {
 
 const Comments = () => {
     const [comments, setComments] = useState<Comment[]>([])
+    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        setIsLoading(true)
+        setError(null)
+
         fetch("https://jsonplaceholder.typicode.com/comments?_limit=10")
             .then((response) => {
                 if (!response.ok) {
@@ -22,7 +26,12 @@ const Comments = () => {
             })
             .then((data: Comment[]) => setComments(data))
             .catch((err: Error) => setError(err.message))
+            .finally(() => setIsLoading(false))
     }, [])
+
+    if (isLoading) {
+        return <p>Laddar data...</p>
+    }
 
     if (error) {
         return <p>Något gick fel: {error}</p>

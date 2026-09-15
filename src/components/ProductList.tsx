@@ -1,11 +1,12 @@
-import { products } from "../data/products";
+import type { Product } from "../types/product.type";
 import ProductCard from "./ProductCard";
 
 type ProductListProps = {
     onAddToCart: () => void
+    products: Product[]
 }
 
-const ProductList = ({ onAddToCart }: ProductListProps) => {
+const ProductList = ({ products, onAddToCart }: ProductListProps) => {
 
     return (
         <>
