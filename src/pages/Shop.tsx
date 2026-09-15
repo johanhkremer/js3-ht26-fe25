@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import ProductList from "../components/ProductList";
+import useFetch from "../hooks/useFetch";
 import type { Product } from "../types/product.type";
 
 type ShopProps = {
@@ -7,33 +7,7 @@ type ShopProps = {
 }
 
 const Shop = ({ onAddToCart }: ShopProps) => {
-    const [products, setProducts] = useState<Product[]>([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
-
-    useEffect(() => {
-        const getProducts = async () => {
-            setIsLoading(true)
-            setError(null)
-
-            try {
-                const response = await fetch('https://fakestoreapi.com/products')
-
-                if (!response.ok) {
-                    throw new Error("Någonting gick fel")
-                }
-
-                const data = await response.json()
-                setProducts(data)
-            } catch (error) {
-                setError((error as Error).message)
-            } finally {
-                setIsLoading(false)
-            }
-        }
-
-        getProducts()
-    }, [])
+    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapi.com/products")
 
     if (isLoading) {
         return <p>Laddar produkter...</p>
@@ -41,6 +15,10 @@ const Shop = ({ onAddToCart }: ShopProps) => {
 
     if (error) {
         return <p>Någonting gick fel: {error}</p>
+    }
+
+    if (!products) {
+        return <p>Inga prodkter</p>
     }
 
     return (
