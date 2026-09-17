@@ -8,18 +8,20 @@ type ProductCardProps = {
 
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
     return (
-        <div className="product-card">
+        <div className="card product-card">
             <figure>
-                <img src={product.image} />
+                <img className="product-card-img" src={product.image} />
             </figure>
 
-            <Link to={`/shop/${product.id}`}>
+            <Link className="product-card-title" to={`/shop/${product.id}`}>
                 <strong>{product.title}</strong>
             </Link>
 
-            <span className="price-tag">{Math.round(product.price)} kr</span>
+            <div className="product-card-footer">
+                <span className="price-tag">{Math.round(product.price)} kr</span>
 
-            <button onClick={onAddToCart}>Lägg till i kundvagn</button>
+                <button onClick={onAddToCart}>Lägg till i kundvagn</button>
+            </div>
         </div>
     )
 }

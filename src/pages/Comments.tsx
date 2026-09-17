@@ -24,16 +24,17 @@ const Comments = () => {
     }
 
     return (
-        <div>
+        <>
             <h2>Kommentarer</h2>
-            {comments.map((comment) => (
-                <div key={comment.id}>
-                    <p>{comment.id}</p>
-                    <p>{comment.name}</p>
-                </div>
-            ))}
-
-        </div>
+            <ul className="comment-list">
+                {comments.map((comment) => (
+                    <li className="card" key={comment.id}>
+                        <p>{comment.id}</p>
+                        <p>{comment.name}</p>
+                    </li>
+                ))}
+            </ul>
+        </>
     )
 }
 

@@ -9,15 +9,16 @@ type ProductListProps = {
 const ProductList = ({ products, onAddToCart }: ProductListProps) => {
 
     return (
-        <>
+        <ul className="product-grid">
             {products.map((product) => (
-                <ProductCard
-                    key={product.id}
-                    product={product}
-                    onAddToCart={onAddToCart}
-                />
+                <li key={product.id}>
+                    <ProductCard
+                        product={product}
+                        onAddToCart={onAddToCart}
+                    />
+                </li>
             ))}
-        </>
+        </ul>
     )
 }
 

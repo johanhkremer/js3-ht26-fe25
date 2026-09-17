@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Shop from "./pages/Shop";
 import { useState } from "react";
 import Comments from "./pages/Comments";
+import Footer from "./components/Footer";
 
 function App() {
   const [cartCount, setCartCount] = useState(0)
@@ -14,16 +15,20 @@ function App() {
   const addToCart = () => setCartCount((cartCount) => cartCount + 1)
 
   return <>
-    <Nav cartCount={cartCount} />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop onAddToCart={addToCart} />} />
-      <Route path="/shop/:id" element={<ProductDetail />} />
-      <Route path="/comments" element={<Comments />} />
-      <Route path="/about" element={<About />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <header>
+      <Nav cartCount={cartCount} />
+    </header>
+    <main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop onAddToCart={addToCart} />} />
+        <Route path="/shop/:id" element={<ProductDetail />} />
+        <Route path="/comments" element={<Comments />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </main>
+    <Footer />
   </>
 }
-
 export default App

@@ -51,10 +51,16 @@ const ProductDetail = () => {
     }
 
     return (
-        <div>
-            <h2>{product.title}</h2>
-            <p>{product.price} kr</p>
-            <p>{product.description}</p>
+        <div className="product-detail">
+            <figure className="product-detail-figure">
+                <img className="product-detail-img" src={product.image} />
+            </figure>
+
+            <div className="product-detail-info">
+                <h2>{product.title}</h2>
+                <p>{product.price} kr</p>
+                <p>{product.description}</p>
+            </div>
         </div>
     )
 }

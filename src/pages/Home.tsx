@@ -3,7 +3,7 @@ import AutoIncrement from "../components/AutoIncrement";
 
 const Home = () => {
     return (
-        <div>
+        <>
             <h2>Välkommen till butiken</h2>
             <p>
                 Här hittar du praktiska prylar för vardagen - allt från ryggsäckar
@@ -15,8 +15,7 @@ const Home = () => {
             </p>
 
             <AutoIncrement />
-        </div>
-
+        </>
     )
 }
 
