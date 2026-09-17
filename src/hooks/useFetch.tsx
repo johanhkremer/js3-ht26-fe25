@@ -1,35 +1,25 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-function useFetch<T>(url: string) {
-    const [data, setData] = useState<T | null>(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
+function useFetch<T>(url: string, staleTime = 60_000) {
+    const { data, isLoading, error } = useQuery<T>({
+        queryKey: [url],
+        queryFn: async () => {
+            const response = await fetch(url)
 
-    useEffect(() => {
-        const getData = async () => {
-            setIsLoading(true)
-            setError(null)
-
-            try {
-                const response = await fetch(url)
-
-                if (!response.ok) {
-                    throw new Error("Någonting gick fel")
-                }
-
-                const data = await response.json()
-                setData(data)
-            } catch (error) {
-                setError((error as Error).message)
-            } finally {
-                setIsLoading(false)
+            if (!response.ok) {
+                throw new Error("Någonting gick fel")
             }
-        }
 
-        getData()
-    }, [])
+            return response.json() as Promise<T>
+        },
+        staleTime,
+    })
 
-    return { data, isLoading, error }
+    return {
+        data: data ?? null,
+        loading: isLoading,
+        error: error ? (error as Error).message : null,
+    }
 }
 
 export default useFetch
