@@ -8,6 +8,7 @@ import Shop from "./pages/Shop";
 import { useState } from "react";
 import Comments from "./pages/Comments";
 import Footer from "./components/Footer";
+import Todos from "./pages/Todos";
 
 function App() {
   const [cartCount, setCartCount] = useState(0)
@@ -24,6 +25,7 @@ function App() {
         <Route path="/shop" element={<Shop onAddToCart={addToCart} />} />
         <Route path="/shop/:id" element={<ProductDetail />} />
         <Route path="/comments" element={<Comments />} />
+        <Route path="/todos" element={<Todos />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import styles from "./Footer.module.css"
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className={styles.footer}>
             <p>2026 Alla rättigheter förbehållna</p>
             <div className="footer-links">
                 <Link to="/about">Om oss</Link>
