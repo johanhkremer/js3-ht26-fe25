@@ -6,7 +6,7 @@ type ShopProps = {
     onAddToCart: () => void
 }
 
-const Shop = ({ onAddToCart }: ShopProps) => {
+function Shop({ onAddToCart }: ShopProps) {
     const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapi.com/products")
 
     if (isLoading) {

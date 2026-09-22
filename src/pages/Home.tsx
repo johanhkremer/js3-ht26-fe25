@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import AutoIncrement from "../components/AutoIncrement";
 
-const Home = () => {
+function Home() {
     return (
         <>
             <h2>Välkommen till butiken</h2>
@@ -14,7 +13,7 @@ const Home = () => {
                 alla produkter.
             </p>
 
-            <AutoIncrement />
+            <h2>Shad cn knapp</h2>
         </>
     )
 }

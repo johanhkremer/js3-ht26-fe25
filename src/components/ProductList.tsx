@@ -6,10 +6,10 @@ type ProductListProps = {
     products: Product[]
 }
 
-const ProductList = ({ products, onAddToCart }: ProductListProps) => {
+function ProductList({ products, onAddToCart }: ProductListProps) {
 
     return (
-        <ul className="product-grid">
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4">
             {products.map((product) => (
                 <li key={product.id}>
                     <ProductCard

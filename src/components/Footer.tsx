@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from "./Footer.module.css"
 
-const Footer = () => {
+function Footer() {
     return (
-        <footer className={styles.footer}>
+        <footer className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border py-6 text-[0.9rem] text-muted-foreground">
             <p>2026 Alla rättigheter förbehållna</p>
-            <div className="footer-links">
+            <div className="flex gap-4">
                 <Link to="/about">Om oss</Link>
                 <Link to="/shop">Butik</Link>
                 <a href="mailto:kontakt@butiken.se">Kontakt</a>

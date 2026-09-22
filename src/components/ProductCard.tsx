@@ -1,14 +1,41 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../types/product.type";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
 
 type ProductCardProps = {
     product: Product,
     onAddToCart: () => void
 }
 
-const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
+function ProductCard({ product, onAddToCart }: ProductCardProps) {
     return (
-        <div className="box-border flex h-full flex-col items-start gap-3.5 rounded-md border border-[#ccc] p-5 transition duration-150 ease-in-out hover:border-[#999] hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+        <Card className="h-full">
+            <CardHeader>
+                <CardTitle className="truncate">
+                    <Link to={`/shop/${product.id}`}>
+                        {product.title}
+                    </Link>
+                </CardTitle>
+
+            </CardHeader>
+            <CardContent>
+                <img className="h-40 w-full object-contain" src={product.image} alt={product.title} />
+
+            </CardContent>
+            <CardFooter className="mt-auto justify-between">
+                <span className="font-semibold">Pris: {Math.round(product.price)} kr</span>
+                <Button onClick={onAddToCart}>Lägg till i kundvagn</Button>
+            </CardFooter>
+        </Card>
+    )
+}
+
+export default ProductCard
+
+
+
+{/* <div className="box-border flex h-full flex-col items-start gap-3.5 rounded-md border border-[#ccc] p-5 transition duration-150 ease-in-out hover:border-[#999] hover:shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
             <figure className="m-0 mb-1 w-full">
                 <img className="h-40 w-full bg-white object-contain" src={product.image} />
             </figure>
@@ -32,8 +59,4 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
                     Lägg till i kundvagn
                 </button>
             </div>
-        </div>
-    )
-}
-
-export default ProductCard
+        </div> */}

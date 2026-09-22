@@ -8,7 +8,7 @@ type Comment = {
     body: string
 }
 
-const Comments = () => {
+function Comments() {
     const { data: comments, isLoading, error } = useFetch<Comment[]>("https://jsonplaceholder.typicode.com/comments?_limit=10")
 
     if (isLoading) {
@@ -26,9 +26,9 @@ const Comments = () => {
     return (
         <>
             <h2>Kommentarer</h2>
-            <ul className="comment-list">
+            <ul>
                 {comments.map((comment) => (
-                    <li className="card" key={comment.id}>
+                    <li className="mt-4 rounded-[6px] border bg-card p-4 text-card-foreground" key={comment.id}>
                         <p>{comment.id}</p>
                         <p>{comment.name}</p>
                     </li>

@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import type { Product } from "../types/product.type";
 import useFetch from "../hooks/useFetch";
 
-const ProductDetail = () => {
+function ProductDetail() {
     const { id } = useParams()
 
     const { data: product, isLoading, error } = useFetch<Product>(`https://fakestoreapi.com/products/${id}`)
@@ -25,12 +25,12 @@ const ProductDetail = () => {
     }
 
     return (
-        <div className="product-detail">
-            <figure className="product-detail-figure">
-                <img className="product-detail-img" src={product.image} />
+        <div className="mt-6 flex flex-wrap gap-6">
+            <figure className="flex-[0_0_240px]">
+                <img className="size-60 bg-card object-contain" src={product.image} />
             </figure>
 
-            <div className="product-detail-info">
+            <div className="flex min-w-0 flex-[1_1_260px] flex-col gap-3">
                 <h2>{product.title}</h2>
                 <p>{product.price} kr</p>
                 <p>{product.description}</p>

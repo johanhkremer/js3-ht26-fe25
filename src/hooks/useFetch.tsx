@@ -17,7 +17,7 @@ function useFetch<T>(url: string, staleTime = 60_000) {
 
     return {
         data: data ?? null,
-        loading: isLoading,
+        isLoading,
         error: error ? (error as Error).message : null,
     }
 }

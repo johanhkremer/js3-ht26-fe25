@@ -1,24 +1,27 @@
 import { NavLink } from "react-router-dom";
 
+const navLinkBase = "mr-4 border-b-2 pb-[0.15rem] text-foreground no-underline";
+
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "nav-link nav-link-active" : "nav-link";
+    isActive
+        ? `${navLinkBase} border-foreground`
+        : `${navLinkBase} border-transparent hover:border-muted-foreground focus-visible:border-muted-foreground`;
 
 
 type navProps = {
     cartCount: number
 }
 
-const Nav = ({ cartCount }: navProps) => {
+function Nav({ cartCount }: navProps) {
     return (
-        <nav>
+        <nav className="mb-6 flex items-center justify-between py-4">
             <div>
                 <NavLink to="/" className={navLinkClass} end>Homepage</NavLink>
                 <NavLink to="/shop" className={navLinkClass}>Butik</NavLink>
                 <NavLink to="/comments" className={navLinkClass}>Kommentarer</NavLink>
-                <NavLink to="/todos" className={navLinkClass}>Att göra</NavLink>
                 <NavLink to="/about" className={navLinkClass}>Om oss</NavLink>
             </div>
-            <div className="cart">
+            <div className="flex items-center gap-4">
                 <span>🛒 Kunvagn: {cartCount}</span>
             </div>
         </nav>

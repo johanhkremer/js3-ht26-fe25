@@ -1,152 +1,149 @@
 @import "tailwindcss";
+/* shadcn: animationer som komponenterna använder (t.ex. öppna/stänga dialoger) */
+@import "tw-animate-css";
+/* shadcn: grundstilar som shadcn-komponenterna bygger på */
+@import "shadcn/tailwind.css";
+/* shadcn: typsnittet Geist som används i temat */
+@import "@fontsource-variable/geist";
 
-html {
-    height: 100%;
-    scrollbar-gutter: stable;
+/* shadcn: gör att "dark:"-klasser gäller inuti ett element med klassen .dark */
+@custom-variant dark (&:is(.dark *));
+
+/* shadcn: kopplar CSS-variablerna nedan till Tailwind-klasser, t.ex. bg-primary, text-muted-foreground */
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-body {
-    height: calc(100% - 4rem);
+/* shadcn: färger och radie för ljust tema – ändra här för att byta utseende */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* shadcn: samma variabler för mörkt tema (aktiveras med klassen .dark) */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* shadcn: standardstilar för kantlinjer, bakgrund och text på hela sidan */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply h-full font-sans [scrollbar-gutter:stable];
+  }
+
+  body {
+    @apply mx-auto my-8 h-[calc(100%-4rem)] max-w-[900px] bg-background px-4 text-foreground;
     font-family: system-ui, sans-serif;
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
+  }
 
-#root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
+  #root {
+    @apply flex min-h-full flex-col;
+  }
 
-main {
-    flex: 1;
-}
-
-a {
-    color: #222;
-    text-decoration-color: #999;
-}
-
-a:hover,
-a:focus-visible {
-    text-decoration-color: #222;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
-    margin-bottom: 1.5rem;
-}
-
-.footer-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.nav-link {
-    margin-right: 1rem;
-    color: #222;
-    text-decoration: none;
-    padding-bottom: 0.15rem;
-    border-bottom: 2px solid transparent;
-}
-
-.nav-link:hover,
-.nav-link:focus-visible {
-    border-bottom-color: #999;
-}
-
-.nav-link-active {
-    border-bottom-color: #222;
-}
-
-.nav-link-active:hover,
-.nav-link-active:focus-visible {
-    border-bottom-color: #222;
-}
-
-.card {
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 1rem;
-    margin-top: 1rem;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.comment-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.product-detail button,
-.cart button,
-.card button {
-    flex-shrink: 0;
-    padding: 0.4rem 0.9rem;
-    background: #222;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
-}
-
-.product-detail button:hover,
-.cart button:hover,
-.card button:hover {
-    background: #444;
-}
-
-.product-detail button:focus-visible,
-.cart button:focus-visible,
-.card button:focus-visible {
-    outline: 2px solid #222;
-    outline-offset: 2px;
-}
-
-.product-detail {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.product-detail-figure {
-    margin: 0;
-    flex: 0 0 240px;
-}
-
-.product-detail-img {
-    width: 240px;
-    height: 240px;
-    object-fit: contain;
-    background: #fff;
-}
-
-.product-detail-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    flex: 1 1 260px;
-    min-width: 0;
-}
-
-.cart {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  a {
+    @apply text-foreground decoration-muted-foreground hover:decoration-foreground focus-visible:decoration-foreground;
+  }
 }
