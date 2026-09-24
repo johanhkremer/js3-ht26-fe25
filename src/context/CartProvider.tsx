@@ -1,13 +1,14 @@
 import { useState, type ReactNode } from "react";
 import { CartContext } from "./cart-context";
+import type { Product } from "@/types/product.type";
 
 function CartProvider({ children }: { children: ReactNode }) {
-    const [cartCount, setCartCount] = useState(0)
+    const [cart, setCart] = useState<Product[]>([])
 
-    const addToCart = () => setCartCount((cartCount) => cartCount + 1)
+    const addToCart = (product: Product) => setCart((prev) => [...prev, product])
 
     return (
-        <CartContext.Provider value={{ cartCount, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart }}>
             {children}
         </CartContext.Provider>
     )

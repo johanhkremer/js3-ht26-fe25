@@ -5,23 +5,19 @@ import Nav from "./components/Nav";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
 import Shop from "./pages/Shop";
-import { useState } from "react";
 import Comments from "./pages/Comments";
 import Footer from "./components/Footer";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0)
-
-  const addToCart = () => setCartCount((cartCount) => cartCount + 1)
 
   return <>
     <header>
-      <Nav cartCount={cartCount} />
+      <Nav />
     </header>
     <main className="flex-1">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop onAddToCart={addToCart} />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<ProductDetail />} />
         <Route path="/comments" element={<Comments />} />
         <Route path="/about" element={<About />} />

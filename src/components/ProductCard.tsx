@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import type { Product } from "../types/product.type";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
+import useCart from "@/hooks/useCart";
 
 type ProductCardProps = {
     product: Product,
-    onAddToCart: () => void
 }
 
-function ProductCard({ product, onAddToCart }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
+    const { addToCart } = useCart()
+
     return (
         <Card className="h-full">
             <CardHeader>
@@ -25,7 +27,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
             </CardContent>
             <CardFooter className="mt-auto justify-between">
                 <span className="font-semibold">Pris: {Math.round(product.price)} kr</span>
-                <Button onClick={onAddToCart}>Lägg till i kundvagn</Button>
+                <Button onClick={() => addToCart(product)}>Lägg till i kundvagn</Button>
             </CardFooter>
         </Card>
     )

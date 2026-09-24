@@ -2,11 +2,7 @@ import ProductList from "../components/ProductList";
 import useFetch from "../hooks/useFetch";
 import type { Product } from "../types/product.type";
 
-type ShopProps = {
-    onAddToCart: () => void
-}
-
-function Shop({ onAddToCart }: ShopProps) {
+function Shop() {
     const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapi.com/products")
 
     if (isLoading) {
@@ -25,7 +21,7 @@ function Shop({ onAddToCart }: ShopProps) {
         <>
             <h1>Butik</h1>
             <h2>Våra produkter</h2>
-            <ProductList products={products} onAddToCart={onAddToCart} />
+            <ProductList products={products} />
         </>
 
     )
