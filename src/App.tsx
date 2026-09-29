@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Shop from "./pages/Shop";
 import Comments from "./pages/Comments";
 import Footer from "./components/Footer";
+import Cart from "./pages/Cart";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/shop/:id" element={<ProductDetail />} />
         <Route path="/comments" element={<Comments />} />
         <Route path="/about" element={<About />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

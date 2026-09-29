@@ -1,5 +1,6 @@
 import useCart from "@/hooks/useCart";
 import { NavLink } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const navLinkBase = "mr-4 border-b-2 pb-[0.15rem] text-foreground no-underline";
 
@@ -10,9 +11,7 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 
 function Nav() {
-    const { cart } = useCart()
-
-    console.log("Kundvagn:", cart)
+    const { totalItems, clearCart } = useCart()
 
     return (
         <nav className="mb-6 flex items-center justify-between py-4">
@@ -23,7 +22,8 @@ function Nav() {
                 <NavLink to="/about" className={navLinkClass}>Om oss</NavLink>
             </div>
             <div className="flex items-center gap-4">
-                <span>🛒 Kunvagn: {cart.length}</span>
+                <Button onClick={clearCart} variant={"secondary"}>Töm kassa</Button>
+                <NavLink to="/cart" className={navLinkClass}>🛒 Kunvagn: {totalItems}</NavLink>
             </div>
         </nav>
     )

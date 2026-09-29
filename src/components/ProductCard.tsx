@@ -15,7 +15,7 @@ function ProductCard({ product }: ProductCardProps) {
         <Card className="h-full">
             <CardHeader>
                 <CardTitle className="truncate">
-                    <Link to={`/shop/${product.id}`}>
+                    <Link to={`/shop/${product._id}`}>
                         {product.title}
                     </Link>
                 </CardTitle>
@@ -44,7 +44,7 @@ export default ProductCard
 
             <Link
                 className="block w-full overflow-hidden text-ellipsis whitespace-nowrap text-[#222] no-underline hover:underline focus-visible:underline"
-                to={`/shop/${product.id}`}
+                to={`/shop/${product._id}`}
             >
                 <strong>{product.title}</strong>
             </Link>

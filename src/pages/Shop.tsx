@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import type { Product } from "../types/product.type";
 
 function Shop() {
-    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapi.com/products")
+    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapiserver.reactbd.com/products")
 
     if (isLoading) {
         return <p>Laddar produkter...</p>

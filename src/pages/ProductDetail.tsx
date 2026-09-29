@@ -5,7 +5,8 @@ import useFetch from "../hooks/useFetch";
 function ProductDetail() {
     const { id } = useParams()
 
-    const { data: product, isLoading, error } = useFetch<Product>(`https://fakestoreapi.com/products/${id}`)
+    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapiserver.reactbd.com/products")
+    const product = products?.find((p) => p._id === Number(id))
 
     if (isLoading) {
         return <p>Laddar produkt...</p>

@@ -10,7 +10,7 @@ function ProductList({ products }: ProductListProps) {
     return (
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4">
             {products.map((product) => (
-                <li key={product.id}>
+                <li key={product._id}>
                     <ProductCard
                         product={product}
                     />
