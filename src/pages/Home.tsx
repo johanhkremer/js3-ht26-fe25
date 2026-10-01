@@ -1,3 +1,5 @@
+import LoginReactHookForm from "@/components/LoginReactHookForm";
+import LoginUseState from "@/components/LoginUseState";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -14,6 +16,9 @@ function Home() {
             </p>
 
             <h2>Shad cn knapp</h2>
+
+            <LoginUseState />
+            <LoginReactHookForm />
         </>
     )
 }

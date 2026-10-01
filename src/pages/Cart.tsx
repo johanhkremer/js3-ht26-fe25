@@ -1,3 +1,4 @@
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import useCart from "@/hooks/useCart";
 
 const Cart = () => {
@@ -8,10 +9,18 @@ const Cart = () => {
             <h1>Kundvag</h1>
             <ul>
                 {cart.map((product) => (
-                    <li key={product._id}>
-                        <h2>{product.title}</h2>
-                        <p>{product.price} kr</p>
-                        <p>{product.quantity}</p>
+                    <li key={product._id} className="mt-5">
+                        <Card>
+                            <CardHeader>
+                                <strong>{product.title}</strong>
+                            </CardHeader>
+                            <CardContent>
+                                <p>{Math.round(product.price)} kr</p>
+                            </CardContent>
+                            <CardFooter>
+                                <p>{product.quantity}</p>
+                            </CardFooter>
+                        </Card>
                     </li>
                 ))}
             </ul>
