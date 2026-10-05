@@ -4,10 +4,11 @@ import { Button } from "./ui/button";
 
 const navLinkBase = "mr-4 border-b-2 pb-[0.15rem] text-foreground no-underline";
 
-const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive
+function navLinkClass({ isActive }: { isActive: boolean }) {
+    return isActive
         ? `${navLinkBase} border-foreground`
         : `${navLinkBase} border-transparent hover:border-muted-foreground focus-visible:border-muted-foreground`;
+}
 
 
 function Nav() {

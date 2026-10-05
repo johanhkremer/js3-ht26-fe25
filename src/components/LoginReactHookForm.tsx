@@ -9,10 +9,10 @@ type LoginData = {
     password: string;
 }
 
-const LoginReactHookForm = () => {
+function LoginReactHookForm() {
     const { register, handleSubmit } = useForm<LoginData>()
 
-    const onSubmit = (data: LoginData) => {
+    function onSubmit(data: LoginData) {
         console.log(data)
     }
 

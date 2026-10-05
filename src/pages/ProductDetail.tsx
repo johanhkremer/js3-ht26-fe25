@@ -1,11 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import type { Product } from "../types/product.type";
-import useFetch from "../hooks/useFetch";
+import { useProducts } from "../hooks/useProducts";
 
 function ProductDetail() {
     const { id } = useParams()
 
-    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapiserver.reactbd.com/products")
+    const { data: products, isLoading, error } = useProducts()
     const product = products?.find((p) => p._id === Number(id))
 
     if (isLoading) {
@@ -13,7 +12,7 @@ function ProductDetail() {
     }
 
     if (error) {
-        return <p>Någonting gick fel: {error}</p>
+        return <p>Någonting gick fel: {error.message}</p>
     }
 
     if (!product) {

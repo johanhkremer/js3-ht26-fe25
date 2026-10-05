@@ -1,16 +1,15 @@
 import ProductList from "../components/ProductList";
-import useFetch from "../hooks/useFetch";
-import type { Product } from "../types/product.type";
+import { useProducts } from "../hooks/useProducts";
 
 function Shop() {
-    const { data: products, isLoading, error } = useFetch<Product[]>("https://fakestoreapiserver.reactbd.com/products")
+    const { data: products, isLoading, error } = useProducts()
 
     if (isLoading) {
         return <p>Laddar produkter...</p>
     }
 
     if (error) {
-        return <p>Någonting gick fel: {error}</p>
+        return <p>Någonting gick fel: {error.message}</p>
     }
 
     if (!products) {

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import useCart from "@/hooks/useCart";
 
-const Cart = () => {
+function Cart() {
     const { cart } = useCart()
 
     return (

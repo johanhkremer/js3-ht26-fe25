@@ -13,12 +13,12 @@ const loginSchema = z.object({
 
 type LoginData = z.infer<typeof loginSchema>
 
-const LoginReactHookFormZod = () => {
+function LoginReactHookFormZod() {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema),
     })
 
-    const onSubmit = (data: LoginData) => {
+    function onSubmit(data: LoginData) {
         console.log(data)
     }
     return (

@@ -4,11 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Label } from "./ui/label";
 import { useState } from "react";
 
-const LoginUseState = () => {
+function LoginUseState() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handelSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    function handelSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault()
         console.log({ email, password })
     }
