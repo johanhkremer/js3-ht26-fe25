@@ -1,13 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../services/product.service";
+import { useQuery } from "@tanstack/react-query"
+import { getProducts } from "../services/productService"
 
-// Servicen vet hur produkterna hämtas, hooken vet under vilken nyckel de cachas.
-// Alla komponenter som använder useProducts delar samma cache.
-function useProducts() {
+export function useProducts() {
     return useQuery({
         queryKey: ["products"],
         queryFn: getProducts,
+        staleTime: 60_000,
     })
 }
-
-export default useProducts

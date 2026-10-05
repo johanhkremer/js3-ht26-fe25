@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useComments from "../hooks/useComments";
-import useCreateComment from "../hooks/useCreateComment";
-import useDeleteComment from "../hooks/useDeleteComment";
+import { useAddComment, useComments, useDeleteComment } from "../hooks/useComments";
 import { Button } from "../components/ui/button";
 
 const commentSchema = z.object({
@@ -16,7 +14,7 @@ type CommentFormData = z.infer<typeof commentSchema>
 
 function Comments() {
     const { data: comments, isLoading, error } = useComments()
-    const addComment = useCreateComment()
+    const addComment = useAddComment()
     const deleteComment = useDeleteComment()
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<CommentFormData>({

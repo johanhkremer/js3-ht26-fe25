@@ -1,9 +1,9 @@
-export async function request<T>(url: string, errorMessage: string, options?: RequestInit): Promise<T> {
+export async function request<T>(url: string, options?: RequestInit): Promise<T> {
     const response = await fetch(url, options)
 
     if (!response.ok) {
-        throw new Error(errorMessage)
+        throw new Error("Någonting gick fel")
     }
 
-    return response.json()
+    return response.json() as Promise<T>
 }
