@@ -1,5 +1,5 @@
 import ProductList from "../components/ProductList";
-import { useProducts } from "../hooks/useProducts";
+import useProducts from "../hooks/useProducts";
 
 function Shop() {
     const { data: products, isLoading, error } = useProducts()

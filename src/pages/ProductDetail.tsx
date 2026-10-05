@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useProducts } from "../hooks/useProducts";
+import useProducts from "../hooks/useProducts";
 
 function ProductDetail() {
     const { id } = useParams()
