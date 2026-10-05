@@ -7,14 +7,14 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const loginSchema = z.object({
-    email: z.email(),
-    password: z.string().min(8)
+    email: z.email("Du måste ange en giltig e-post adress."),
+    password: z.string().min(8, "Lösenordet måste ha minst 8 tecken.")
 })
 
 type LoginData = z.infer<typeof loginSchema>
 
 const LoginReactHookFormZod = () => {
-    const { register, handleSubmit } = useForm<LoginData>({
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema),
     })
 
@@ -24,13 +24,13 @@ const LoginReactHookFormZod = () => {
     return (
         <Card className="w-full max-w-sm">
             <CardHeader>
-                <CardTitle>React Hook Form</CardTitle>
+                <CardTitle>React Hook Form - ZOD</CardTitle>
                 <CardDescription>
                     Register kopplar input till formuläret.
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <div className="flex flex-col gap-6">
                         <div className="grid gap-2">
                             <Label htmlFor="email">E-post</Label>
@@ -38,10 +38,10 @@ const LoginReactHookFormZod = () => {
                                 id="email"
                                 type="email"
                                 placeholder="m@example.com"
-                                {...register("email"), {
-                                    required: true
-                                }}
+                                {...register("email")}
                             />
+
+                            {errors.email && <p className="text-destructive">{errors.email.message}</p>}
                         </div>
                         <div className="grid gap-2">
                             <div className="flex items-center">
@@ -53,6 +53,8 @@ const LoginReactHookFormZod = () => {
                                 placeholder="Lösenord"
                                 {...register("password")}
                             />
+
+                            {errors.password && <p className="text-destructive">{errors.password.message}</p>}
                         </div>
                     </div>
                     <Button type="submit" className="w-full mt-5">

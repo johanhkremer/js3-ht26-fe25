@@ -1,4 +1,5 @@
 import LoginReactHookForm from "@/components/LoginReactHookForm";
+import LoginReactHookFormZod from "@/components/LoginReactHookFormZod";
 import LoginUseState from "@/components/LoginUseState";
 import { Link } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function Home() {
 
             <LoginUseState />
             <LoginReactHookForm />
+            <LoginReactHookFormZod />
         </>
     )
 }
