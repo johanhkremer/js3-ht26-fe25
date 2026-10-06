@@ -13,3 +13,19 @@ export interface Product {
 export interface CartItem extends Product {
     quantity: number
 }
+
+export interface Customer {
+    name: string,
+    email: string,
+    phone: string,
+    address: string,
+    zip: string,
+    city: string
+}
+
+export interface Order {
+    orderNumber: string,
+    items: CartItem[],
+    total: number,
+    customer: Customer
+}
