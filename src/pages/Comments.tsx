@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAddComment, useComments, useDeleteComment } from "../hooks/useComments";
 import { Button } from "../components/ui/button";
+import { Spinner } from "../components/ui/spinner";
 
 const commentSchema = z.object({
     name: z.string().min(2, "Namnet måste ha minst 2 tecken."),
@@ -26,7 +27,12 @@ function Comments() {
     }
 
     if (isLoading) {
-        return <p>Laddar data...</p>
+        return (
+            <div className="flex items-center justify-center gap-2 py-12 text-muted-foreground">
+                <Spinner className="size-6" />
+                <span>Laddar kommentarer...</span>
+            </div>
+        )
     }
 
     if (error) {
@@ -49,6 +55,7 @@ function Comments() {
                 <textarea className="rounded-[6px] border p-2" placeholder="Kommentar" {...register("body")} />
                 {errors.body && <p className="text-destructive">{errors.body.message}</p>}
                 <Button type="submit" disabled={addComment.isPending}>
+                    {addComment.isPending && <Spinner data-icon="inline-start" />}
                     {addComment.isPending ? "Skickar..." : "Skicka kommentar"}
                 </Button>
                 {addComment.isError && <p>Kunde inte skicka kommentaren</p>}
@@ -62,6 +69,7 @@ function Comments() {
                         <Button variant="destructive" size="sm" className="mt-2"
                             disabled={deleteComment.isPending && deleteComment.variables === comment.id}
                             onClick={() => deleteComment.mutate(comment.id)}>
+                            {deleteComment.isPending && deleteComment.variables === comment.id && <Spinner data-icon="inline-start" />}
                             Ta bort
                         </Button>
                     </li>
