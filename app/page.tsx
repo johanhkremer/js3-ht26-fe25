@@ -6,6 +6,8 @@ export default function Home() {
       <h1>Min första Next.js sida!</h1>
 
       <Link href={"/about"}>Om oss</Link>
+      <Link href={"/test"}>Test</Link>
+      <Link href={"/shop"}>Shop</Link>
     </>
   );
 }
