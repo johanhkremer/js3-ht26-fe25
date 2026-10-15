@@ -11,13 +11,14 @@ async function Shop() {
     const products: Product[] = await res.json()
 
     return (
-        <>
-            <h1>Shop</h1>
+        <section className="space-y-6">
+            <div className="space-y-1">
+                <h1 className="text-2xl font-semibold tracking-tight">Shop</h1>
+                <p className="text-sm text-muted-foreground">{products.length} produkter</p>
+            </div>
 
             <ProductList products={products} />
-
-        </>
-
+        </section>
     )
 }
 
